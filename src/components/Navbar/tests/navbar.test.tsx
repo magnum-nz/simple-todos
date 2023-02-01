@@ -1,7 +1,7 @@
-import React from 'react';
-import {render, screen} from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect';
 import { Navbar } from '../Navbar';
+import userEvent from '@testing-library/user-event';
 
 test('Navbar is rendered', () => {
     //arrange
@@ -14,4 +14,14 @@ test('Navbar is rendered', () => {
     expect(navOptionOne).toBeInTheDocument();
     expect(navOptionTwo).toBeInTheDocument();
     expect(navOptionThree).toBeInTheDocument();
-})
+});
+
+test('Clicked navbar element is set as active', async () => {
+    //arrange
+    render(<Navbar />);
+    //act
+    const navOptionThree = screen.queryByText('Done')?.parentElement;
+    navOptionThree &&  await userEvent.click(navOptionThree);
+    //assert
+    expect(navOptionThree).toHaveClass('ant-menu-item-selected')
+});

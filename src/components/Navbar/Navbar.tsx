@@ -26,14 +26,15 @@ export const Navbar: React.FC = () => {
   const [current, setCurrent] = useState('mail');
 
   const onClick: MenuProps['onClick'] = (e) => {
-    console.log('click ', e);
     setCurrent(e.key);
   };
 
   return (
-    <div className={styles.navbarContainer}>
-      <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
-    </div>
+    <nav>
+      <div className={styles.navbarContainer}>
+        <Menu onClick={onClick} selectedKeys={[current]} mode="horizontal" items={items} />
+      </div>
+    </nav>
   );
 };
 
