@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter, Route } from 'react-router-dom';
 import { Navbar } from "./components/Navbar/Navbar";
 import styles from './App.module.css';
 
@@ -7,7 +8,9 @@ const App: React.FC = () => {
     <>
       <Navbar />
       <section className={styles.pageBody}>
-
+      <BrowserRouter>
+        <Route path="/" component={}/>
+      </BrowserRouter>
       </section>
     </>
   );
